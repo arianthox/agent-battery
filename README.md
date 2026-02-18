@@ -1,5 +1,7 @@
 # Agent Battery
 
+[![CI](https://github.com/arianthox/agent-battery/actions/workflows/ci.yml/badge.svg)](https://github.com/arianthox/agent-battery/actions/workflows/ci.yml)
+
 Agent Battery is a cross-platform Electron desktop app for tracking AI account usage across OpenAI/ChatGPT, Claude, and Cursor in one local-first dashboard.
 
 ## Tech stack
