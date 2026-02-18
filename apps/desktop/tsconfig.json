@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@renderer/*": ["renderer/src/*"]
+    }
+  },
+  "include": ["renderer/src/**/*.ts", "renderer/src/**/*.tsx"]
+}

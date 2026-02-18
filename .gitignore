@@ -1,0 +1,13 @@
+node_modules
+dist
+coverage
+*.log
+.env
+.DS_Store
+*.tsbuildinfo
+.pnpm-store
+apps/desktop/.vite
+packages/db/dev.sqlite
+packages/db/dev.sqlite-journal
+packages/db/prisma/dev.sqlite
+packages/db/prisma/dev.sqlite-journal

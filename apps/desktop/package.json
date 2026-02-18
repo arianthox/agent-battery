@@ -1,0 +1,39 @@
+{
+  "name": "@agent-battery/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"pnpm dev:renderer\" \"pnpm dev:electron:build\" \"pnpm dev:electron:run\"",
+    "dev:renderer": "vite --config renderer/vite.config.ts",
+    "dev:electron:build": "tsc -p tsconfig.electron.json --watch",
+    "dev:electron:run": "wait-on tcp:5173 dist/electron/main.js && nodemon --watch dist/electron --exec \"electron dist/electron/main.js\"",
+    "build": "pnpm --filter @agent-battery/shared build && pnpm --filter @agent-battery/db build && pnpm build:renderer && pnpm build:electron",
+    "build:renderer": "vite build --config renderer/vite.config.ts",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "typecheck": "pnpm --filter @agent-battery/shared build && pnpm --filter @agent-battery/db build && tsc -p tsconfig.json --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "lint": "eslint electron renderer/src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@agent-battery/db": "workspace:*",
+    "@agent-battery/shared": "workspace:*",
+    "@tanstack/react-query": "^5.62.16",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.14",
+    "@types/react-dom": "^18.3.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "keytar": "^7.9.0",
+    "nodemon": "^3.1.9",
+    "vite": "^6.0.3",
+    "wait-on": "^8.0.1"
+  }
+}
