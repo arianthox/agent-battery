@@ -19,33 +19,25 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile=false
-        working-directory: agent-battery
 
       - name: Generate Prisma client
         run: pnpm db:generate
-        working-directory: agent-battery
         env:
           DATABASE_URL: file:./packages/db/dev.sqlite
 
       - name: Lint
         run: pnpm lint
-        working-directory: agent-battery
 
       - name: Typecheck
         run: pnpm typecheck
-        working-directory: agent-battery
 
       - name: Test
         run: pnpm test
-        working-directory: agent-battery
         env:
           DATABASE_URL: file:./packages/db/dev.sqlite
 
       - name: Build desktop
         run: pnpm --filter @agent-battery/desktop build
-        working-directory: agent-battery
